@@ -10,6 +10,7 @@ import com.example.watchdeck.data.entities.Issue
 interface IssueDao {
     @Query("SELECT * FROM issues")
     fun getIssues() : LiveData<List<Issue>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(issues: List<Issue>)
 

@@ -8,7 +8,4 @@ interface IssueService {
     @GET("issues")
     suspend fun getIssues() : Response<List<Issue>>
 
-
-//    @GET("{id}")
-//    suspend fun getIssue(@Path("id") id: Int): Response<Issue>
 }

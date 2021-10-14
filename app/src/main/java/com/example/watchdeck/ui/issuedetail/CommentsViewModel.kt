@@ -9,7 +9,7 @@ import com.example.watchdeck.data.entities.Comment
 import com.example.watchdeck.data.repository.CommentRepository
 import com.example.watchdeck.utils.Resource
 
-class IssueDetailViewModel @ViewModelInject constructor(
+class CommentsViewModel @ViewModelInject constructor(
     private val repository: CommentRepository
 ) : ViewModel() {
 

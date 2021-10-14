@@ -8,7 +8,7 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="characterDetailFragment">
+                  <entry key="issuesDetailFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -20,7 +20,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="charactersFragment">
+                  <entry key="issuesFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

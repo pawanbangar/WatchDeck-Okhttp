@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.watchdeck.data.entities.Data
 import com.example.watchdeck.data.entities.Issue
-import com.example.watchdeck.databinding.ItemCharacterBinding
+import com.example.watchdeck.databinding.ItemIssueBinding
 import java.text.SimpleDateFormat
 
 class IssuesAdapter(private val listener: IssueItemListener) : RecyclerView.Adapter<IssueViewHolder>() {
@@ -27,7 +27,7 @@ class IssuesAdapter(private val listener: IssueItemListener) : RecyclerView.Adap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueViewHolder {
-        val binding: ItemCharacterBinding = ItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: ItemIssueBinding = ItemIssueBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return IssueViewHolder(binding, listener)
     }
 
@@ -36,7 +36,7 @@ class IssuesAdapter(private val listener: IssueItemListener) : RecyclerView.Adap
     override fun onBindViewHolder(holder: IssueViewHolder, position: Int) = holder.bind(items[position])
 }
 
-class IssueViewHolder(private val itemBinding: ItemCharacterBinding, private val listener: IssuesAdapter.IssueItemListener) : RecyclerView.ViewHolder(itemBinding.root),
+class IssueViewHolder(private val itemBinding: ItemIssueBinding, private val listener: IssuesAdapter.IssueItemListener) : RecyclerView.ViewHolder(itemBinding.root),
     View.OnClickListener {
 
     private lateinit var issue: Issue
@@ -64,7 +64,7 @@ class IssueViewHolder(private val itemBinding: ItemCharacterBinding, private val
     }
 
     override fun onClick(v: View?) {
-        Data(info = issue.body,id=issue.number,comments_url = issue.comments_url).let { listener.onClickedIssue(it) }
+        Data(info = issue.body,id=issue.number).let { listener.onClickedIssue(it) }
     }
 }
 

@@ -10,7 +10,5 @@ class Data(
     val info: String? = null,
     @SerializedName("id")
     @PrimaryKey
-    val id:Int?=null,
-    @SerializedName("comments_url")
-    val comments_url:String?=null
+    val id:Int?=null
 )

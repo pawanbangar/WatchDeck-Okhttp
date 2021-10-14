@@ -7,6 +7,5 @@ class IssueRemoteDataSource @Inject constructor(
 ): BaseDataSource() {
 
     suspend fun getIssues() = getResult { issueService.getIssues() }
-  //  suspend fun getIssue(id: Int) = getResult { issueService.getIssue(id) }
 
 }

@@ -15,7 +15,7 @@ abstract class BaseDataSource {
             }
             return error(" ${response.code()} ${response.message()}")
         } catch (e: Exception) {
-            return error(e.toString())
+            return error(e.message.toString())
         }
     }
 

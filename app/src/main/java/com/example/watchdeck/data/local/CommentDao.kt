@@ -9,12 +9,12 @@ import com.example.watchdeck.data.entities.Comment
 
 @Dao
 interface CommentDao {
-    @Query("SELECT * FROM comments WHERE id = :id")
-    fun getComments(id: Int): LiveData<List<Comment>>
+    @Query("SELECT * FROM comments where id=:id")
+    fun getComments(id:Int): LiveData<List<Comment>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(issues: List<Comment>)
+    suspend fun insertAll(comment: List<Comment>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(issues: Comment)
+    suspend fun insert(comment: Comment)
 }

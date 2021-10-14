@@ -10,11 +10,6 @@ class IssueRepository @Inject constructor(
     private val localDataSource: IssueDao
 ) {
 
-//    fun getIssue(number: Int) = performGetOperation(
-//        databaseQuery = { localDataSource.getIssue(number) },
-//        networkCall = { remoteDataSource.getIssue(number) },
-//        saveCallResult = { localDataSource.insert(it) }
-//    )
 
     fun getIssues() = performGetOperation(
         databaseQuery = { localDataSource.getIssues() },

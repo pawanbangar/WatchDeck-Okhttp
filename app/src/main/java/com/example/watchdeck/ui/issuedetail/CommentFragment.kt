@@ -1,7 +1,6 @@
 package com.example.watchdeck.ui.issuedetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,39 +8,51 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.watchdeck.data.entities.Comment
-import com.example.watchdeck.databinding.IssueDetailFragmentBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.watchdeck.databinding.CommentFragmentBinding
 import com.example.watchdeck.utils.Resource
 import com.example.watchdeck.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class IssueDetailFragment : Fragment() {
+class CommentFragment : Fragment() {
 
-    private var binding: IssueDetailFragmentBinding by autoCleared()
-    private val viewModel: IssueDetailViewModel by viewModels()
+    private var binding: CommentFragmentBinding by autoCleared()
+    private val viewModel: CommentsViewModel by viewModels()
+    private lateinit var adapter: CommentsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = IssueDetailFragmentBinding.inflate(inflater, container, false)
+        binding = CommentFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.getInt("id")?.let { viewModel.start(it) }
+        binding.title.text=arguments?.getString("info")
+        setupRecyclerView()
         setupObservers()
+    }
+
+    private fun setupRecyclerView() {
+        adapter = CommentsAdapter()
+        binding.charactersRv.layoutManager = LinearLayoutManager(requireContext())
+        binding.charactersRv.isNestedScrollingEnabled=true
+        binding.charactersRv.adapter = adapter
     }
 
     private fun setupObservers() {
         viewModel.comments.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
-                    bindComment(it.data!!)
+                    if (!it.data.isNullOrEmpty()){
+                        adapter.setItems(ArrayList(it.data))
+                    }
                     binding.progressBar.visibility = View.GONE
-                    binding.characterCl.visibility = View.VISIBLE
+                    binding.charactersRv.visibility = View.VISIBLE
                 }
 
                 Resource.Status.ERROR ->
@@ -49,21 +60,9 @@ class IssueDetailFragment : Fragment() {
 
                 Resource.Status.LOADING -> {
                     binding.progressBar.visibility = View.VISIBLE
-                    binding.characterCl.visibility = View.GONE
+                    binding.charactersRv.visibility = View.GONE
                 }
             }
         })
-    }
-
-    private fun bindComment(comment: List<Comment>) {
-            Log.v("data",comment.toString());
-//        binding.name.text = issue.name
-//        binding.species.text = issue.species
-//        binding.status.text = issue.status
-//        binding.gender.text = issue.gender
-//        Glide.with(binding.root)
-//            .load(issue.image)
-//            .transform(CircleCrop())
-//            .into(binding.image)
     }
 }

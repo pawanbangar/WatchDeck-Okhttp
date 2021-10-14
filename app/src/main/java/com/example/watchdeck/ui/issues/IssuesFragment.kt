@@ -64,7 +64,7 @@ class IssuesFragment : Fragment(), IssuesAdapter.IssueItemListener {
     override fun onClickedIssue(data: Data) {
         findNavController().navigate(
             R.id.action_charactersFragment_to_characterDetailFragment,
-            bundleOf("id" to data.id,"comments_url" to data.comments_url,"info" to data.info)
+            bundleOf("id" to data.id,"info" to data.info)
         )
     }
 }

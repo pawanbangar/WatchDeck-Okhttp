@@ -1,4 +1,4 @@
-package com.example.watchdeck.ui.issuedetail
+package com.example.watchdeck.ui.Comment
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/issuesDetailFragment"
-        android:name="com.example.watchdeck.ui.issuedetail.CommentFragment"
+        android:name="com.example.watchdeck.ui.Comment.CommentFragment"
         android:label="Comments"
         tools:layout="@layout/comment_fragment" />
 </navigation>

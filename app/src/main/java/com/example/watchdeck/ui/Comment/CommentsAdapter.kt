@@ -1,4 +1,4 @@
-package com.example.watchdeck.ui.issuedetail
+package com.example.watchdeck.ui.Comment
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

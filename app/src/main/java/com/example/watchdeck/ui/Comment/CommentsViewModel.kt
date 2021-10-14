@@ -1,4 +1,4 @@
-package com.example.watchdeck.ui.issuedetail
+package com.example.watchdeck.ui.Comment
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

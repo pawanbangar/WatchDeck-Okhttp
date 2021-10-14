@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/issuesFragment">
+
+    <fragment
+        android:id="@+id/issuesFragment"
+        android:name="com.example.watchdeck.ui.issues.IssuesFragment"
+        android:label="Characters"
+        tools:layout="@layout/issues_fragment" >
+        <action
+            android:id="@+id/action_charactersFragment_to_characterDetailFragment"
+            app:destination="@id/issuesDetailFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/issuesDetailFragment"
+        android:name="com.example.watchdeck.ui.issuedetail.IssueDetailFragment"
+        android:label="Character Detail"
+        tools:layout="@layout/issue_detail_fragment" />
+</navigation>
